@@ -2,25 +2,25 @@
 This Node JS package pulls data from the Food Hygiene Rating System (FRHS) API (version 2) and allows you to utilise the responses in your node projects.
 
 ## FHRS Api Docs
-The full list of endpoints and official documentation can be found here. No API key is required.
+The full list of endpoints can be found here. No API key is required.
 
 https://api.ratings.food.gov.uk/Help
 
 ## Getting Started
 
 To install this package run the following:
-```
-npm install --save food-hygeine-ratings
+```bash
+npm install --save food-hygiene-ratings
 ```
 
 Once installed you can instantiate the FHRS client in your code:
-```
+```js
 const fhrs = require('./src/fhrs.js'),
     client = new fhrs.Client();
 ```
     
 Now that you have the client running you can use the FHRS data like this:
-``` 
+```js
 client.ratings.getRatings()
 .then(function (response) {
     console.log('The full response': response);
@@ -37,7 +37,7 @@ client.ratings.getRatings()
 Returns a basic list of authorities (id/name), details can be retrieved by calling `getAuthority()`, results are unbound.
 https://api.ratings.food.gov.uk/Help/Api/GET-Authorities-basic
 
-```
+```js
 var params = {pageNumber:3, pageSize: 1};
 
 client.authorities.getAuthoritiesBasic(params)
@@ -54,7 +54,7 @@ client.authorities.getAuthoritiesBasic(params)
 ### getAuthorities()
 Returns details of all authorities, results are unbound.
 https://api.ratings.food.gov.uk/Help/Api/GET-Authorities
-```
+```js
 client.authorities.getAuthorities()
 .then(function (response) {
     console.log(response.data);
@@ -69,7 +69,7 @@ client.authorities.getAuthorities()
 ### getAuthority()
 Returns details of a single authority, selected by Id.
 https://api.ratings.food.gov.uk/Help/Api/GET-Authorities-id
-```
+```js
 var authorityId = 310; //Cheltenham Borough Council
 
 client.authorities.getAuthority(authorityId)
@@ -87,7 +87,7 @@ client.authorities.getAuthority(authorityId)
 ### getBusinessTypesBasic()
 Returns a basic list of business types, results are unbound.
 https://api.ratings.food.gov.uk/Help/Api/GET-BusinessTypes-basic
-```
+```js
 client.businessTypes.getBusinessTypesBasic()
 .then(function (response) {
     console.log(response.data);
@@ -101,7 +101,7 @@ client.businessTypes.getBusinessTypesBasic()
 ### getBusinessTypes()
 Returns details of all business types, results are unbound.
 https://api.ratings.food.gov.uk/Help/Api/GET-BusinessTypes
-```
+```js
 client.businessTypes.getBusinessTypes()
 .then(function (response) {
     console.log(response.data);
@@ -115,22 +115,24 @@ client.businessTypes.getBusinessTypes()
 ### getBusinessType()
 Returns details of a single business type, selected by Id.
 https://api.ratings.food.gov.uk/Help/Api/GET-BusinessTypes-id
-```
-client.businessTypes.getBusinessType()
+```js
+var businessTypeid = 7843; // Pub/bar/nightclub
+
+client.businessTypes.getBusinessType(businessTypeid)
 .then(function (response) {
     console.log(response.data);
 });
 ```
 | Parameter | Description |
 |-----------|-------------|
-| id | The target Authority Id. (required) |
+| id | The target business type Id. (required) |
 
 ## Countries
 
 ### getCountriesBasic()
 Returns a basic list of countries, results are unbound.
 https://api.ratings.food.gov.uk/Help/Api/GET-Countries-basic
-```
+```js
 client.countries.getCountriesBasic()
 .then(function (response) {
     console.log(response.data);
@@ -142,9 +144,9 @@ client.countries.getCountriesBasic()
 | pageSize | Size of the page to be returned. (optional)|
 
 ### getCountries()
-Returns details of all countries, results are unbound.
+Returns details of all countries, results are unbound. Optionally specify `pageNumber` and `pageSize` to get specific page results.
 https://api.ratings.food.gov.uk/Help/Api/GET-Countries
-```
+```js
 client.countries.getCountries()
 .then(function (response) {
     console.log(response.data);
@@ -158,7 +160,7 @@ client.countries.getCountries()
 ### getCountry()
 Returns details of a single country, selected by Id.
 https://api.ratings.food.gov.uk/Help/Api/GET-Countries-id
-```
+```js
 var countryId = 1; //England
 
 client.countries.getCountry(countryId)
@@ -168,7 +170,7 @@ client.countries.getCountry(countryId)
 ```
 | Parameter | Description |
 |-----------|-------------|
-| id | The target Authority Id. (required) |
+| id | The target country Id. (required) |
 
 ## Establishments
 
@@ -177,8 +179,8 @@ client.countries.getCountry(countryId)
 Returns a details of a single establishment, selected by Id.
 
 https://api.ratings.food.gov.uk/Help/Api/GET-Establishments-id
-```
-var establishmentId = 13944;
+```js
+var establishmentId = 13944; //Pan Pizza, Cheltenham
 
 client.establishments.getEstablishment(establishmentId)
 .then(function (response) {
@@ -187,8 +189,7 @@ client.establishments.getEstablishment(establishmentId)
 ```
 | Parameter | Description |
 |-----------|-------------|
-| pageNumber | The page number to return results from. (optional) |
-| pageSize | Size of the page to be returned. (optional)|
+| id | The target estblishment id. (required) |
 
 ### searchEstablishments()
 
@@ -196,20 +197,15 @@ Returns a collection of establishment details, based on provided search paramete
 
 https://api.ratings.food.gov.uk/Help/Api/GET-Establishments_name_address_longitude_latitude_maxDistanceLimit_businessTypeId_schemeTypeKey_ratingKey_ratingOperatorKey_localAuthorityId_countryId_sortOptionKey_pageNumber_pageSize
 
-```
+```js
 var params = {name:'Pan Pizza', 
-            address:'60 High Street, Cheltenham'};
+            address:'60 High Street, Cheltenham'}; //Search for a business with name 'Pan Pizza' with an address matching '60 High Street, Cheltenham'
 
 client.establishments.searchEstablishments(params)
 .then(function (response) {
     console.log(response.data);
 });
 ```
-| Parameter | Description |
-|-----------|-------------|
-| pageNumber | The page number to return results from. (optional) |
-| pageSize | Size of the page to be returned. (optional)|
-
 #### Parameters
 
 | Parameter | Description |
@@ -231,12 +227,12 @@ client.establishments.searchEstablishments(params)
 
 
 ### getEstablishmentsBasic()
-Returns a basic list of establishments (id/name), details can be retrieved by calling establishments/{id}, page parameters allow for page number and size specification.
+Returns a basic list of establishments (id/name), details can be retrieved by calling establishments/{id}, page parameters allow for page number and size specification. Optionally specify `pageNumber` and `pageSize` to get specific page results.
 
 Note - There is no advanced equivalent of this request.
 
 https://api.ratings.food.gov.uk/Help/Api/GET-Establishments-basic
-```
+```js
 var params = {pageNumber:3, pageSize: 1};
 
 client.establishments.getEstablishmentsBasic(params)
@@ -255,7 +251,7 @@ client.establishments.getEstablishmentsBasic(params)
 Returns details of all RatingOperators, results are unbound.
 
 https://api.ratings.food.gov.uk/Help/Api/GET-RatingOperators
-```
+```js
 client.ratingOperators.getRatingOperators()
 .then(function (response) {
     console.log(response.data);
@@ -267,7 +263,7 @@ client.ratingOperators.getRatingOperators()
 ### getRatings()
 Returns details of all ratings, results are unbound.
 https://api.ratings.food.gov.uk/Help/Api/GET-Ratings
-```
+```js
 client.ratings.getRatings()
 .then(function (response) {
     console.log(response.data);
@@ -277,9 +273,9 @@ client.ratings.getRatings()
 ## Regions
 
 ### getRegions()
-Returns details of all regions, results are unbound. Optionally specify params to get specific page results.
+Returns details of all regions, results are unbound. Optionally specify params to get specific page results. Optionally specify `pageNumber` and `pageSize` to get specific page results.
 https://api.ratings.food.gov.uk/Help/Api/GET-Regions
-```
+```js
 var params = {pageNumber:16, pageSize: 10};
 
 client.regions.getRegions(params)
@@ -295,7 +291,7 @@ client.regions.getRegions(params)
 ### getRegionsBasic()
 Returns a basic list of regions, details can be retrieved by calling `getRegion()`. Optionally specify `pageNumber` and `pageSize` to get specific page results.
 https://api.ratings.food.gov.uk/Help/Api/GET-Regions-basic
-```
+```js
 var params = {pageNumber:16, pageSize: 10};
 
 client.regions.getRegionsBasic(params)
@@ -311,7 +307,7 @@ client.regions.getRegionsBasic(params)
 ### getRegion()
 Returns details of a single region, selected by Id.
 https://api.ratings.food.gov.uk/Help/Api/GET-Regions-id
-```
+```js
 var regionId = 4;
 
 client.regions.getRegion(regionId)
@@ -329,7 +325,7 @@ client.regions.getRegion(regionId)
 Returns details of all SchemeTypes, results are unbound.
 https://api.ratings.food.gov.uk/Help/Api/GET-SchemeTypes
 
-```
+```js
 client.schemeTypes.getSchemeTypes()
 .then(function (response) {
     console.log(response.data);
@@ -342,7 +338,7 @@ client.schemeTypes.getSchemeTypes()
 	
 Returns details of all scoreDescriptor, results are unbound.
 https://api.ratings.food.gov.uk/Help/Api/GET-ScoreDescriptors_establishmentId
-```
+```js
 var establishmentId = 13944;
 
 client.scoreDescriptors.getScoreDescriptors(establishmentId)
@@ -360,7 +356,7 @@ client.scoreDescriptors.getScoreDescriptors(establishmentId)
 ### getSortOptions()
 Returns details of all SortOptions, results are unbound.
 https://api.ratings.food.gov.uk/Help/Api/GET-SortOptions
-```
+```js
 client.sortOptions.getSortOptions()
 .then(function (response) {
     console.log(response.data);
