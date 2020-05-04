@@ -34,7 +34,7 @@ client.ratings.getRatings()
 ## Authorities
 
 ### getAuthoritiesBasic()
-Returns a basic list of authorities (id/name), details can be retrieved by calling `getAuthority()`, results are unbound.
+Returns a basic list of authorities (id/name), details can be retrieved by calling `getAuthority()`, results are unbound. Optionally specify `pageNumber` and `pageSize` to get specific page results.
 https://api.ratings.food.gov.uk/Help/Api/GET-Authorities-basic
 
 ```js
@@ -52,7 +52,7 @@ client.authorities.getAuthoritiesBasic(params)
 | pageSize | Size of the page to be returned. (optional)|
 
 ### getAuthorities()
-Returns details of all authorities, results are unbound.
+Returns details of all authorities, results are unbound. Optionally specify `pageNumber` and `pageSize` to get specific page results.
 https://api.ratings.food.gov.uk/Help/Api/GET-Authorities
 ```js
 client.authorities.getAuthorities()
@@ -85,7 +85,7 @@ client.authorities.getAuthority(authorityId)
 ## Business Types
 
 ### getBusinessTypesBasic()
-Returns a basic list of business types, results are unbound.
+Returns a basic list of business types, results are unbound. Optionally specify `pageNumber` and `pageSize` to get specific page results.
 https://api.ratings.food.gov.uk/Help/Api/GET-BusinessTypes-basic
 ```js
 client.businessTypes.getBusinessTypesBasic()
@@ -99,7 +99,7 @@ client.businessTypes.getBusinessTypesBasic()
 | pageSize | Size of the page to be returned. (optional)|
 
 ### getBusinessTypes()
-Returns details of all business types, results are unbound.
+Returns details of all business types, results are unbound. Optionally specify `pageNumber` and `pageSize` to get specific page results.
 https://api.ratings.food.gov.uk/Help/Api/GET-BusinessTypes
 ```js
 client.businessTypes.getBusinessTypes()
@@ -130,7 +130,7 @@ client.businessTypes.getBusinessType(businessTypeid)
 ## Countries
 
 ### getCountriesBasic()
-Returns a basic list of countries, results are unbound.
+Returns a basic list of countries, results are unbound. Optionally specify `pageNumber` and `pageSize` to get specific page results.
 https://api.ratings.food.gov.uk/Help/Api/GET-Countries-basic
 ```js
 client.countries.getCountriesBasic()
