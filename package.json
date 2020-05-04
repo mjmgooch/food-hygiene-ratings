@@ -1,0 +1,26 @@
+{
+  "name": "food-hygiene-ratings",
+  "version": "0.0.1",
+  "description": "Fetches data from the .gov.uk food hygiene ratings scheme API",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "mjmgooch",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.1.2"
+  },
+  "main": "src/fhrs.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjmgooch/food-hygiene-ratings.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mjmgooch/food-hygiene-ratings/issues"
+  },
+  "homepage": "https://github.com/mjmgooch/food-hygiene-ratings#readme"
+}
