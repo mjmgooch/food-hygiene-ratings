@@ -15,7 +15,7 @@ npm install --save food-hygiene-ratings
 
 Once installed you can instantiate the FHRS client in your code:
 ```js
-const fhrs = require('./src/fhrs.js'),
+const fhrs = require('food-hygiene-ratings'),
     client = new fhrs.Client();
 ```
     
