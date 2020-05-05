@@ -14,7 +14,7 @@ var businessTypes = function businessTypes() {
  *   http://api.ratings.food.gov.uk/Help/Api/GET-BusinessTypes
  *   http://api.ratings.food.gov.uk/Help/Api/GET-BusinessTypes-basic
  */
-  function getBusinessTypesBasic(params = []) {
+  function getBusinessTypesBasic(params = { pageNumber: null, pageSize: null }) {
 
     var url = '/BusinessTypes/basic/';
 
@@ -41,7 +41,7 @@ var businessTypes = function businessTypes() {
 *   http://api.ratings.food.gov.uk/Help/Api/GET-BusinessTypes
 *   http://api.ratings.food.gov.uk/Help/Api/GET-BusinessTypes-basic
 */
-  function getBusinessTypes(params = []) {
+  function getBusinessTypes(params = { pageNumber: null, pageSize: null }) {
 
     var url = '/BusinessTypes/';
 

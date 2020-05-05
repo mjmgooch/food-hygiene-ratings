@@ -16,7 +16,7 @@ var authorities = function authorities() {
 *   http://api.ratings.food.gov.uk/Help/Api/GET-Authorities-basic
 */
 
-  function getAuthoritiesBasic(params = []) {
+  function getAuthoritiesBasic(params = { pageNumber: null, pageSize: null }) {
 
     var url = '/Authorities/basic/';
 
@@ -43,7 +43,7 @@ var authorities = function authorities() {
 *   http://api.ratings.food.gov.uk/Help/Api/GET-Authorities
 *   http://api.ratings.food.gov.uk/Help/Api/GET-Authorities-basic
 */
-  function getAuthorities(params = []) {
+  function getAuthorities(params = { pageNumber: null, pageSize: null }) {
 
     var url = '/Authorities/';
 

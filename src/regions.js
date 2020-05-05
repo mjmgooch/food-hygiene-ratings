@@ -15,7 +15,7 @@ var regions = function regions() {
       *   http://api.ratings.food.gov.uk/Help/Api/GET-Regions-basic
       */
 
-    function getRegions(params = []) {
+    function getRegions(params = { pageNumber: null, pageSize: null }) {
 
         var url = '/Regions/';
 
@@ -34,7 +34,7 @@ var regions = function regions() {
 
     }
 
-    function getRegionsBasic(params = []) {
+    function getRegionsBasic(params = { pageNumber: null, pageSize: null }) {
 
         var url = '/Regions/Basic/';
 

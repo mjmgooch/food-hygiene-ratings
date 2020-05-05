@@ -14,7 +14,7 @@ var countries = function countries() {
    *   http://api.ratings.food.gov.uk/Help/Api/GET-Countries
    *   http://api.ratings.food.gov.uk/Help/Api/GET-Countries-basic
    */
-  function getCountriesBasic(params = []) {
+  function getCountriesBasic(params = { pageNumber: null, pageSize: null }) {
 
     var url = '/Countries/basic/';
 
@@ -41,7 +41,7 @@ var countries = function countries() {
  *   http://api.ratings.food.gov.uk/Help/Api/GET-Countries
  *   http://api.ratings.food.gov.uk/Help/Api/GET-Countries-basic
  */
-  function getCountries(params = []) {
+  function getCountries(params = { pageNumber: null, pageSize: null }) {
 
     var url = '/Countries/';
 
