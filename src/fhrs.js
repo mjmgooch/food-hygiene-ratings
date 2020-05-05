@@ -1,4 +1,3 @@
-
 var
     authorities = require('./authorities.js'),
     businessTypes = require('./business-types.js'),

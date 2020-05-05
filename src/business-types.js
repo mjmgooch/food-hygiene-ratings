@@ -1,7 +1,7 @@
 const axios = require('axios');
 const instance = axios.create({
   baseURL: 'http://api.ratings.food.gov.uk/',
-  headers: { 'x-api-version': '2' } //this is essential, the api returns error 400 if this header isnt specified. It should return a proper error IMO but whatevs
+  headers: { 'x-api-version': '2' } 
 });
 
 var businessTypes = function businessTypes() {

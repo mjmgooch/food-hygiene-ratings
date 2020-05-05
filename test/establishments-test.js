@@ -5,7 +5,7 @@ const fhrs = require('../src/fhrs.js');
 client = new fhrs.Client();
 
 describe('client.establishments.getEstablishmentsBasic()', function () {
-    this.timeout(9000); //this is a big query so set the timeout to longer than the default 200ms
+    this.timeout(9000); //this request seems to take some time and often exceeds the 2000ms limit
 
     it('should return a 200 OK', function () {
 
@@ -35,9 +35,8 @@ describe('client.establishments.getEstablishmentsBasic()', function () {
 });
 
 describe('client.establishments.getEstablishment()', function () {
-    this.timeout(9000); //this is a big query so set the timeout to longer than the default 200ms
-    
-    
+    this.timeout(9000); //this request seems to take some time and often exceeds the 2000ms limit
+
     it('should return a 200 OK', function () {
 
         var id = 13944; //Establishment ID (Pan Pizza, Cheltenham)
@@ -53,7 +52,6 @@ describe('client.establishments.getEstablishment()', function () {
         var id = 13944; //Establishment ID (Pan Pizza, Cheltenham)
 
         return client.establishments.getEstablishment(id).then(function (response) {
-            //console.log(response.data);
             expect(response.data).to.be.an('object').and.has.property('meta');
         });
 
@@ -61,8 +59,7 @@ describe('client.establishments.getEstablishment()', function () {
 });
 
 describe('client.establishments.searchEstablishments()', function () {
-    this.timeout(9000); //this is a big query so set the timeout to longer than the default 200ms
-    
+    this.timeout(9000); //this request seems to take some time and often exceeds the 2000ms limit
     
     it('should return a 200 OK', function () {
 
@@ -80,7 +77,6 @@ describe('client.establishments.searchEstablishments()', function () {
         var params = {name:'Pan Pizza', address:'60 High Street, Cheltenham'}; 
 
         return client.establishments.searchEstablishments(params).then(function (response) {
-            //console.log(response);
             expect(response.data).to.be.an('object').and.has.property('meta');
         });
 
