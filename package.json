@@ -1,6 +1,6 @@
 {
   "name": "food-hygiene-ratings",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Fetches data from the .gov.uk food hygiene ratings scheme API",
   "scripts": {
     "test": "mocha"

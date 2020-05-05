@@ -1,27 +1,26 @@
 const axios = require('axios');
 const instance = axios.create({
   baseURL: 'http://api.ratings.food.gov.uk/',
-  headers: { 'x-api-version': '2' } 
+  headers: { 'x-api-version': '2' }
 });
 
 var businessTypes = function businessTypes() {
 
-    /**
-   * Get a list of BusinessTypes.
-   *
-   * Returns details of all businessTypes, results are unbound.
-   *
-   *   http://api.ratings.food.gov.uk/Help/Api/GET-BusinessTypes
-   *   http://api.ratings.food.gov.uk/Help/Api/GET-BusinessTypes-basic
-   */
+  /**
+ * Get a list of BusinessTypes.
+ *
+ * Returns details of all businessTypes, results are unbound.
+ *
+ *   http://api.ratings.food.gov.uk/Help/Api/GET-BusinessTypes
+ *   http://api.ratings.food.gov.uk/Help/Api/GET-BusinessTypes-basic
+ */
   function getBusinessTypesBasic(params = []) {
 
     var url = '/BusinessTypes/basic/';
 
-    if ((!params.pageNumber || !params.pageSize)) {
-      var url;
-    } else {
-      var url = url + `${params.pageNumber}/${params.pageSize}`
+    //check to see if the request is being made with pageNumber and pageSize params
+    if (params.pageNumber && params.pageSize) {
+      url = url + `${params.pageNumber}/${params.pageSize}`;
     }
 
     return instance.get(url)
@@ -34,22 +33,21 @@ var businessTypes = function businessTypes() {
 
   }
 
-      /**
-   * Get a list of BusinessTypes.
-   *
-   * Returns details of all businessTypes, results are unbound.
-   *
-   *   http://api.ratings.food.gov.uk/Help/Api/GET-BusinessTypes
-   *   http://api.ratings.food.gov.uk/Help/Api/GET-BusinessTypes-basic
-   */
+  /**
+* Get a list of BusinessTypes.
+*
+* Returns details of all businessTypes, results are unbound.
+*
+*   http://api.ratings.food.gov.uk/Help/Api/GET-BusinessTypes
+*   http://api.ratings.food.gov.uk/Help/Api/GET-BusinessTypes-basic
+*/
   function getBusinessTypes(params = []) {
 
     var url = '/BusinessTypes/';
 
-    if ((!params.pageNumber || !params.pageSize)) {
-      var url;
-    } else {
-      var url = url + `${params.pageNumber}/${params.pageSize}`
+    //check to see if the request is being made with pageNumber and pageSize params
+    if (params.pageNumber && params.pageSize) {
+      url = url + `${params.pageNumber}/${params.pageSize}`;
     }
 
     return instance.get(url)
@@ -63,11 +61,11 @@ var businessTypes = function businessTypes() {
   }
 
 
-    /**
-   * Returns details of a single business type, selected by Id.
-   *
-   *   http://api.ratings.food.gov.uk/Help/Api/GET-BusinessTypes-id
-   */
+  /**
+ * Returns details of a single business type, selected by Id.
+ *
+ *   http://api.ratings.food.gov.uk/Help/Api/GET-BusinessTypes-id
+ */
   function getBusinessType(id) {
 
     return instance.get(`/BusinessTypes/${id}`)

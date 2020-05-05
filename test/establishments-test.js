@@ -15,7 +15,7 @@ describe('client.establishments.getEstablishmentsBasic()', function () {
 
     });
 
-    it('should return a list of establishments', function () {
+    it('should return a basic list of establishments', function () {
 
         return client.establishments.getEstablishmentsBasic().then(function (response) {
             expect(response.data).to.be.an('object').and.has.property('establishments');
@@ -23,9 +23,29 @@ describe('client.establishments.getEstablishmentsBasic()', function () {
 
     });
 
-    it('should return a paged list of establishments', function () {
+    it('should return a basic paged list of establishments', function () {
 
-        var params = {pageNumber:3, pageSize: 1};
+        var params = { pageNumber: 3, pageSize: 1 };
+
+        return client.establishments.getEstablishmentsBasic(params).then(function (response) {
+            expect(response.data).to.be.an('object').and.has.property('establishments');
+        });
+
+    });
+
+    it('should return a basic paged list of establishments even with other parameters specified', function () {
+
+        var params = { dogs: 3, cats: 4, rats: 'norway' };
+
+        return client.establishments.getEstablishmentsBasic(params).then(function (response) {
+            expect(response.data).to.be.an('object').and.has.property('establishments');
+        });
+
+    });
+
+    it('should return a basic paged list of establishments even with a missing parameters', function () {
+
+        var params = { pageSize: 1 };
 
         return client.establishments.getEstablishmentsBasic(params).then(function (response) {
             expect(response.data).to.be.an('object').and.has.property('establishments');
@@ -48,7 +68,7 @@ describe('client.establishments.getEstablishment()', function () {
     });
 
     it('should return a single establishment', function () {
-        
+
         var id = 13944; //Establishment ID (Pan Pizza, Cheltenham)
 
         return client.establishments.getEstablishment(id).then(function (response) {
@@ -60,11 +80,13 @@ describe('client.establishments.getEstablishment()', function () {
 
 describe('client.establishments.searchEstablishments()', function () {
     this.timeout(9000); //this request seems to take some time and often exceeds the 2000ms limit
-    
+
     it('should return a 200 OK', function () {
 
-        var params = {name:'Pan Pizza', 
-            address:'60 High Street, Cheltenham'}; 
+        var params = {
+            name: 'Pan Pizza',
+            address: '60 High Street, Cheltenham'
+        };
 
         return client.establishments.searchEstablishments(params).then(function (response) {
             expect(response.status).to.equal(200);
@@ -73,8 +95,8 @@ describe('client.establishments.searchEstablishments()', function () {
     });
 
     it('should return a list of establishments meeting the search criteria', function () {
-        
-        var params = {name:'Pan Pizza', address:'60 High Street, Cheltenham'}; 
+
+        var params = { name: 'Pan Pizza', address: '60 High Street, Cheltenham' };
 
         return client.establishments.searchEstablishments(params).then(function (response) {
             expect(response.data).to.be.an('object').and.has.property('meta');

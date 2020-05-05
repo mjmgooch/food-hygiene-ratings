@@ -15,14 +15,13 @@ var regions = function regions() {
       *   http://api.ratings.food.gov.uk/Help/Api/GET-Regions-basic
       */
 
-    function getRegions(params =[]) {
+    function getRegions(params = []) {
 
         var url = '/Regions/';
 
-        if ((!params.pageNumber || !params.pageSize)) {
-            var url;
-        } else {
-            var url = url + `${params.pageNumber}/${params.pageSize}`
+        //check to see if the request is being made with pageNumber and pageSize params
+        if (params.pageNumber && params.pageSize) {
+            url = url + `${params.pageNumber}/${params.pageSize}`;
         }
 
         return instance.get(url)
@@ -39,10 +38,9 @@ var regions = function regions() {
 
         var url = '/Regions/Basic/';
 
-        if ((!params.pageNumber || !params.pageSize)) {
-            var url;
-        } else {
-            var url = url + `${params.pageNumber}/${params.pageSize}`
+        //check to see if the request is being made with pageNumber and pageSize params
+        if (params.pageNumber && params.pageSize) {
+            url = url + `${params.pageNumber}/${params.pageSize}`;
         }
 
         return instance.get(url)

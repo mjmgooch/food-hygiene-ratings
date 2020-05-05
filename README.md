@@ -363,5 +363,9 @@ client.sortOptions.getSortOptions()
 });
 ```
 
+## Acknowledgments
+
+* [Will Stocks](https://github.com/willstocks-tech) for being a rubber duck and all round good guy!
+* [Tim O'Toole](https://www.linkedin.com/in/timmyotoole/?originalSubdomain=ie) for the idea and giving me something to work on during lockdown weekends!
 
 
