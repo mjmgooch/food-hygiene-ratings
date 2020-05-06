@@ -15,6 +15,7 @@
     "mocha": "^7.1.2"
   },
   "main": "src/fhrs.js",
+  "types": "src/types.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mjmgooch/food-hygiene-ratings.git"
